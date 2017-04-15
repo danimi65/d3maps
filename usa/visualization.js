@@ -41,32 +41,39 @@
 
 		unemployment.forEach(function(d) { rateById[d.id] = +d.rate; });
 
-		// adding paths for each state
-		svg.selectAll(".state")
-			.data(states)
-			.enter().append("path")
-			.attr("class", "state")
-			.attr("d", path)
-			.on('mouseover', function(d){
-				d3.select(this).classed("selected", true);
-			})
-			.on('mouseout', function(d){
-				d3.select(this).classed("selected", false);
-			});
+		// var div = d3.select("body").append("div")
+  //   	.attr("class", "tooltip")
+  //   	.style("opacity", 0);
 
-		svg.append("g")
-			.attr("class", "state")
-			.selectAll("path")
+
+		// adding paths for each state
+		//change to onclick, changes route to specific state
+		svg.selectAll("path")
 			.data(states)
 			.enter().append("path")
+			.attr("class", "state")
 			.attr("d", path)
+			.on('click', function(d){
+  
+				console.log('hellow');
+			})
+			// .on('mouseout', function(d){
+			// 	d3.select(this).classed("selected", false);
+			// })
 			.style("fill", function(d) {return color(rateById[d.id]);});
 
-		 // svg.append("path")
-   //    		.datum(topojson.mesh(data, data.objects.states, function(a, b) { return a.id !== b.id; }))
-   //    		.attr("class", "states")
-   //    		.attr("d", path);
 
+
+		// svg.append("g")
+		// 	.attr("class", "state")
+		// 	.selectAll("path")
+		// 	.data(states)
+		// 	.enter().append("path")
+		// 	.attr("d", path)
+		// 	.style("fill", function(d) {return color(rateById[d.id]);});
+		
+
+	
 
 
 	
@@ -75,11 +82,7 @@
 
 
 
-
-
-
-
-
-
-
 })();
+
+
+
